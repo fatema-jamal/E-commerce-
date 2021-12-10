@@ -102,8 +102,8 @@ class CartView extends Component {
                             <IconTrash className="i-va" />
                           </button>
                         </td>
-                                        </tr>
-                                        <tr>
+                      </tr>
+                      <tr>
                         <td>
                           <div className="row">
                             <div className="col-3 d-none d-md-block">
@@ -181,66 +181,6 @@ class CartView extends Component {
                 </p>
               </div>
             </div>
-            <div className="col-md-3">
-              <div className="card mb-3">
-                <div className="card-body">
-                  <CouponApplyForm onSubmit={this.onSubmitApplyCouponCode} />
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-body">
-                  <dl className="row border-bottom">
-                    <dt className="col-6">Total price:</dt>
-                    <dd className="col-6 text-right">$1,568</dd>
-
-                    <dt className="col-6 text-success">Discount:</dt>
-                    <dd className="col-6 text-success text-right">-$58</dd>
-                    <dt className="col-6 text-success">
-                      Coupon:{" "}
-                      <span className="small text-muted">EXAMPLECODE</span>{" "}
-                    </dt>
-                    <dd className="col-6 text-success text-right">-$68</dd>
-                  </dl>
-                  <dl className="row">
-                    <dt className="col-6">Total:</dt>
-                    <dd className="col-6 text-right  h5">
-                      <strong>$1,350</strong>
-                    </dd>
-                  </dl>
-                  <hr />
-                  <p className="text-center">
-                    <img
-                      src="../../images/payment/payments.webp"
-                      alt="..."
-                      height={26}
-                    />
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-light border-top p-4">
-          <div className="container">
-            <h6>Payment and refund policy</h6>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
           </div>
         </div>
       </React.Fragment>

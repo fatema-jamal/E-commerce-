@@ -1,4 +1,7 @@
 import React, { lazy, Component } from "react";
+import { Link } from "react-router-dom";
+import { ReactComponent as IconChevronRight } from "bootstrap-icons/icons/chevron-right.svg";
+import { ReactComponent as IconChevronLeft } from "bootstrap-icons/icons/chevron-left.svg";
 const ProfileForm = lazy(() => import("../../components/account/ProfileForm"));
 const ChangePasswordForm = lazy(() =>
   import("../../components/account/ChangePasswordForm")
@@ -7,7 +10,7 @@ const SettingForm = lazy(() => import("../../components/account/SettingForm"));
 const CardListForm = lazy(() =>
   import("../../components/account/CardListForm")
 );
-
+const newProd = lazy(() => import("../../views/product/NewProduct"));
 class MyProfileView extends Component {
   state = { imagePreview: "", isDeleting: false };
 
@@ -48,11 +51,17 @@ class MyProfileView extends Component {
             />
           </div>
           <div className="col-md-8">
-            <ChangePasswordForm onSubmit={this.onSubmitChangePassword} />
-            <br></br>
-            <SettingForm />
-            <br></br>
-            <CardListForm />
+            <div className="card-footer">
+              <Link
+                to="../../views/product/NewProduct"
+                className="btn btn-primary float-right"
+              >
+                Sell Product <IconChevronRight className="i-va" />
+              </Link>
+              <Link to="/" className="btn btn-secondary">
+                <IconChevronLeft className="i-va" /> Continue shopping
+              </Link>
+            </div>
           </div>
         </div>
       </div>

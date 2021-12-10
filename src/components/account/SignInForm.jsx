@@ -1,9 +1,10 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { compose } from "redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import renderFormGroupField from "../../helpers/renderFormGroupField";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   required,
   maxLength20,
@@ -11,6 +12,7 @@ import {
   maxLengthMobileNo,
   minLengthMobileNo,
   digit,
+  name,
 } from "../../helpers/validation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -20,58 +22,63 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { ReactComponent as IconPhoneFill } from "bootstrap-icons/icons/phone-fill.svg";
 import { ReactComponent as IconShieldLockFill } from "bootstrap-icons/icons/shield-lock-fill.svg";
+import renderFormField from "../../helpers/renderFormField";
+import { render } from "@testing-library/react";
 
-const SignInForm = (props) => {
-  //const { handleSubmit, submitting, onSubmit, submitFailed } = props;
+const axios = require("axios");
 
-  const [mobileNo, setMobile] = useState("");
-  const [password, setPassword] = useState("");
-  const handleMobileChange = (event) => {
-    setMobile(event.target.value);
+function SignInForm(props) {
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+    id: "",
+  });
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setState((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-  const handleSubmit = (event) => {
-    // event.preventDefault();
-    /* alert(`Your state values: \n 
-            mobile no: ${mobileNo} \n 
-            password: ${password} \n 
-            You can replace this alert with your process`);
-  */
-  };
-  const submitting = (event) => {
-    event.preventDefault();
-    alert(`Your state values: \n 
-    mobile no: ${mobileNo} \n 
-    password: ${password} \n 
-    You can replace this alert with your process`);
+  function onSubmit(e) {
+    e.preventDefault();
 
-    //code to back //
-  };
-  const submitFailed = (event) => {};
+    const login = {
+      email: state.email,
+      password: state.password,
+    };
+
+    axios
+      .post("http://localhost:4000/api/v1/users/login", login)
+      .then(function (response) {
+        console.log(response);
+        state.id = response.data.statusText;
+        console.log(state.id);
+        if (response.statusText == "OK") {
+          console.log("meya meya");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {
+        //
+      });
+  }
 
   return (
-    <form
-      onSubmit={handleSubmit(submitting)}
-      className={`needs-validation ${submitFailed ? "was-validated" : ""}`}
-      noValidate
-    >
+    <form onSubmit={onSubmit}>
       <Field
-        name="mobileNo"
-        type="number"
-        label="Mobile no"
-        component={renderFormGroupField}
-        placeholder="Mobile no without country code"
-        icon={IconPhoneFill}
-        onChange={handleMobileChange}
-        value={mobileNo}
-        validate={[required, maxLengthMobileNo, minLengthMobileNo, digit]}
+        name="email"
+        type="text"
+        label="Email"
+        component={renderFormField}
+        placeholder="Email"
+        onChange={handleChange}
+        value={state.email}
+        validate={[required, name]}
         required={true}
-        max="999999999999999"
-        min="9999"
-        className="mb-3"
       />
 
       <Field
@@ -81,19 +88,15 @@ const SignInForm = (props) => {
         component={renderFormGroupField}
         placeholder="******"
         icon={IconShieldLockFill}
-        onChange={handlePasswordChange}
-        value={password}
+        onChange={handleChange}
+        value={state.password}
         validate={[required, maxLength20, minLength8]}
         required={true}
         maxLength="20"
         minLength="8"
         className="mb-3"
       />
-      <button
-        type="submit"
-        className="btn btn-primary btn-block mb-3"
-        disabled={!mobileNo || !password}
-      >
+      <button type="submit" className="btn btn-primary btn-block mb-3">
         Log In
       </button>
       <Link className="float-left" to="/account/signup" title="Sign Up">
@@ -126,7 +129,7 @@ const SignInForm = (props) => {
       </div>
     </form>
   );
-};
+}
 
 export default compose(
   reduxForm({

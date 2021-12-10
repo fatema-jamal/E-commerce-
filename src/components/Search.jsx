@@ -1,7 +1,15 @@
 import React from "react";
 import { ReactComponent as IconSearch } from "bootstrap-icons/icons/search.svg";
+import { useState } from "react";
+const Search = (props) => {
+  const [searchQuery, goSearch] = useState("");
+  const handleSearch = (event) => {
+    goSearch(event.target.value);
+  };
+  const handleButton = (event) => {
+    var searchquery = { searchQuery };
+  };
 
-const Search = () => {
   return (
     <form action="#" className="search">
       <div className="input-group">
@@ -11,6 +19,8 @@ const Search = () => {
           type="text"
           className="form-control"
           placeholder="Search"
+          value={searchQuery}
+          onChange={handleSearch}
           required
         />
         <label className="visually-hidden" htmlFor="search"></label>

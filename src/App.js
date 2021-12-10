@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import TopMenu from "./components/TopMenu";
@@ -28,7 +29,7 @@ const ContactUsView = lazy(() => import("./views/pages/ContactUs"));
 const SupportView = lazy(() => import("./views/pages/Support"));
 const BlogView = lazy(() => import("./views/blog/Blog"));
 const BlogDetailView = lazy(() => import("./views/blog/Detail"));
-
+const NewProductView = lazy(() => import("./views/product/NewProduct"));
 function App() {
   return (
     <BrowserRouter>
@@ -58,6 +59,11 @@ function App() {
               component={NotificationView}
             />
             <Route exact path="/category" component={ProductListView} />
+            <Route
+              exact
+              path="/views/product/NewProduct"
+              component={NewProductView}
+            />
             <Route exact path="/product/detail" component={ProductDetailView} />
             <Route exact path="/star/zone" component={StarZoneView} />
             <Route exact path="/cart" component={CartView} />

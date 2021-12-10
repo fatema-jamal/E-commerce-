@@ -70,19 +70,9 @@ class ProductListView extends Component {
             </span>
           </div>
         </div>
-        <Breadcrumb />
+
         <div className="container-fluid mb-3">
           <div className="row">
-            <div className="col-md-3">
-              <FilterCategory />
-              <FilterPrice />
-              <FilterSize />
-              <FilterStar />
-              <FilterColor />
-              <FilterClear />
-              <FilterTag />
-              <CardServices />
-            </div>
             <div className="col-md-9">
               <div className="row">
                 <div className="col-md-8">
@@ -92,16 +82,6 @@ class ProductListView extends Component {
                   </span>
                 </div>
                 <div className="col-md-4">
-                  <select
-                    className="form-select mw-180 float-left"
-                    aria-label="Default select"
-                  >
-                    <option value={1}>Most Popular</option>
-                    <option value={2}>Latest items</option>
-                    <option value={3}>Trending</option>
-                    <option value={4}>Price low to high</option>
-                    <option value={4}>Price high to low</option>
-                  </select>
                   <div className="btn-group ml-3" role="group">
                     <button
                       aria-label="Grid"

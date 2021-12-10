@@ -20,10 +20,7 @@ const Header = () => {
           <div className="row g-3">
             <div className="col-md-3 text-center">
               <Link to="/">
-                <img
-                  alt="logo"
-                  src="../../images/logo.webp"
-                />
+                <img alt="logo" src="../../images/logo.webp" />
               </Link>
             </div>
             <div className="col-md-5">
@@ -54,37 +51,7 @@ const Header = () => {
                       <IconPersonBadgeFill /> My Profile
                     </Link>
                   </li>
-                  <li>
-                    <Link className="dropdown-item" to="/star/zone">
-                      <IconStarFill className="text-warning" /> Star Zone
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/account/orders">
-                      <IconListCheck className="text-primary" /> Orders
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/account/wishlist">
-                      <IconHeartFill className="text-danger" /> Wishlist
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/account/notification">
-                      <IconBellFill className="text-primary" /> Notification
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/support">
-                      <IconInfoCircleFill className="text-success" /> Support
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
+
                   <li>
                     <Link className="dropdown-item" to="/">
                       <IconDoorClosedFill className="text-danger" /> Logout
@@ -92,16 +59,7 @@ const Header = () => {
                   </li>
                 </ul>
               </div>
-              <a
-                href="https://www.buymeacoffee.com/bhaumik"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-                  alt="BuyMeACoffee" width="120"
-                />
-              </a>
+
               {/* <Link to="/account/signin">Sign In</Link> |{" "}
               <Link to="/account/signup"> Sign Up</Link> */}
             </div>

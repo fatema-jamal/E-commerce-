@@ -63,13 +63,6 @@ const CardProductList2 = (props) => {
               >
                 <FontAwesomeIcon icon={faCartPlus} />
               </button>
-              <button
-                type="button"
-                className="btn btn-sm btn-outline-secondary"
-                title="Add to wishlist"
-              >
-                <FontAwesomeIcon icon={faHeart} />
-              </button>
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ class CheckoutView extends Component {
     return (
       <React.Fragment>
         <div className="bg-secondary border-top p-4 text-white mb-3">
-          <h1 className="display-6">Checkout</h1>
+          <h1 className="display-6">Order</h1>
         </div>
         <div className="container mb-3">
           <div className="row">
@@ -60,105 +60,11 @@ class CheckoutView extends Component {
                         required
                       />
                     </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Addresss"
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Address 2 (Optional)"
-                      />
-                    </div>
-                    <div className="col-md-4">
-                      <select className="form-select" required>
-                        <option value>-- Country --</option>
-                        <option>United States</option>
-                      </select>
-                    </div>
-                    <div className="col-md-4">
-                      <select className="form-select" required>
-                        <option value>-- State --</option>
-                        <option>California</option>
-                      </select>
-                    </div>
-                    <div className="col-md-4">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Zip"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card mb-3">
-                <div className="card-header">
-                  <IconReceipt className="i-va" /> Billing Infomation
-                  <div className="form-check form-check-inline ml-3">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      defaultValue
-                      id="flexCheckDefault"
-                    />
-                    <label
-                      className="form-check-label"
-                      htmlFor="flexCheckDefault"
-                    >
-                      Same as Shipping Infomation
-                    </label>
-                  </div>
-                </div>
-                <div className="card-body">
-                  <div className="row g-3">
                     <div className="col-md-12">
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Name"
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Addresss"
-                        required
-                      />
-                    </div>
-                    <div className="col-md-6">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Address 2 (Optional)"
-                      />
-                    </div>
-                    <div className="col-md-4">
-                      <select className="form-select" required>
-                        <option value>-- Country --</option>
-                        <option>United States</option>
-                      </select>
-                    </div>
-                    <div className="col-md-4">
-                      <select className="form-select" required>
-                        <option value>-- State --</option>
-                        <option>California</option>
-                      </select>
-                    </div>
-                    <div className="col-md-4">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Zip"
+                        placeholder="Address"
                         required
                       />
                     </div>
@@ -257,48 +163,6 @@ class CheckoutView extends Component {
                     Pay Now <strong>$162</strong>
                   </button>
                 </div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card">
-                <div className="card-header">
-                  <IconCart3 className="i-va" /> Cart{" "}
-                  <span className="badge bg-secondary float-right">3</span>
-                </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item d-flex justify-content-between lh-sm">
-                    <div>
-                      <h6 className="my-0">Product name</h6>
-                      <small className="text-muted">Brief description</small>
-                    </div>
-                    <span className="text-muted">$150</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between lh-sm">
-                    <div>
-                      <h6 className="my-0">Second product</h6>
-                      <small className="text-muted">Brief description</small>
-                    </div>
-                    <span className="text-muted">$12</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between lh-sm">
-                    <div>
-                      <h6 className="my-0">Third item</h6>
-                      <small className="text-muted">Brief description</small>
-                    </div>
-                    <span className="text-muted">$50</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between bg-light">
-                    <div className="text-success">
-                      <h6 className="my-0">Promo code</h6>
-                      <small>EXAMPLECODE</small>
-                    </div>
-                    <span className="text-success">−$50</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between">
-                    <span>Total (USD)</span>
-                    <strong>$162</strong>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>

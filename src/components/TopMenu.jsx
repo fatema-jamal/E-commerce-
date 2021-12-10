@@ -50,69 +50,11 @@ const TopMenu = () => {
                       Checkout Page
                     </Link>
                   </li>
-                  <li>
-                    <Link className="dropdown-item" to="/contact-us">
-                      Contact Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/blog">
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/blog/detail">
-                      Blog Detail
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/fsafasf">
-                      404 Page Not Found
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/500">
-                      500 Internal Server Error
-                    </Link>
-                  </li>
                 </ul>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/category">
-                  Fashion
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/category">
-                  Supermarket
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/category">
-                  Electronics
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/category">
-                  Furniture
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/category">
-                  Garden & Outdoors
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/category">
-                  Jewellery
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/documentation">
-                  Documentation
+                  Categories
                 </Link>
               </li>
             </ul>

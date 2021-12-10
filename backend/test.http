@@ -1,0 +1,10 @@
+POST http://localhost:4000/api/v1/users/register
+Content-Type: application/json
+
+{
+    "name": "fatma",
+     "email": "fatma@gmail.com",
+      "password": "1235778",
+       "phone": "01159694657",
+        "address": "ain shams",
+}
