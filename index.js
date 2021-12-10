@@ -22,15 +22,15 @@ app.use(errorHandler);
 //routers
 //const usersRoutes=require('./routes/users');
 const users=require('./routes/users');
-
 const cartr = require('./routes/carts');
 const productsRoutes = require('./routes/products');
 
 const api = process.env.API_URL;
-
+const order = require('./routes/orders');
 app.use(`${api}/users`,users.router);
 app.use(`${api}/carts`, cartr);
 app.use(`${api}/products`,  productsRoutes);
+app.use(${api}/orders, order);
 
 
 ///database
