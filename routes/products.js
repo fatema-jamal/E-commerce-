@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 ////to view all the products in the user profile
 router.get(`/`, async (req, res) =>{
-    // localhost:3000/api/v1/products << profile
+// localhost:3000/api/v1/products << profile
 
     
   
@@ -21,7 +21,7 @@ router.get(`/`, async (req, res) =>{
 
 //1)SEARCH by  Category
 router.get(`/search`, async (req, res) =>{
-    // localhost:3000/api/v1/products?categories=2342342,234234
+// localhost:3000/api/v1/products?categories=2342342,234234
     let filter = {};
     if(req.query.categories)
     {
@@ -36,12 +36,7 @@ router.get(`/search`, async (req, res) =>{
     } 
     res.send(productList);
 })
-//add a NEW product *****but still need to add the user id
-//3nd Fatma SELL PRODUCT Button
-
-
- 
-
+//add a NEW product to a certain user
  router.post(`/`, async (req, res) =>{
  // localhost:3000/api/v1/products?uid=2342342234234
  
@@ -67,35 +62,16 @@ router.get(`/search`, async (req, res) =>{
 
     res.send(product);
 })
-/*router.post(`/`, async (req, res) =>{
 
-    let product = new Product({
-        name: req.body.name,
-        description: req.body.description,
-        image: req.body.image,
-        brand: req.body.brand,
-        price: req.body.price,
-        category: req.body.category,
-        countInStock: req.body.countInStock,
-    })
- 
-    product = await product.save();
 
-    if(!product) 
-    return res.status(500).send('The product cannot be created')
-
-    res.send(product);
-})
-*/
 //3)Modify an existing product
-
-router.put('/:id',async (req, res)=> {
-    if(!mongoose.isValidObjectId(req.params.id)) {
+router.put('/',async (req, res)=> {
+    if(!mongoose.isValidObjectId(req.query.pid)) {
        return res.status(400).send('Invalid Product Id')
     }
 
     const product = await Product.findByIdAndUpdate(
-        req.params.id,
+        req.query.pid,
         {
             name: req.body.name,
             description: req.body.description,
@@ -115,8 +91,8 @@ router.put('/:id',async (req, res)=> {
 })
 
 //4)DELETE a product
-router.delete('/:id', (req, res)=>{
-    Product.findByIdAndRemove(req.params.id).then(product =>{
+router.delete('/', (req, res)=>{
+    Product.findByIdAndRemove(req.query.pid).then(product =>{
         if(product) {
             return res.status(200).json({success: true, message: 'the product is deleted!'})
         } else {
