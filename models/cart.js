@@ -1,14 +1,7 @@
 const mongoose = require('mongoose');
 
 const cartSchema = mongoose.Schema({
-  /*  ownedByObject:
-    {
-        
-       type: mongoose.Schema.Types.ObjectId,
-       ref: 'users'
-     
-   
-    },*/
+  
     ownedByString:
     {
       type: String,
