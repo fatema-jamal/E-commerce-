@@ -5,15 +5,11 @@ const mongoose = require('mongoose');
 
 
 
-//get the cart
 
-/*
+
+//get the cart
 router.get(`/`, async (req, res) =>{
 
-    // console.log('gsje');
-    // console.log(req.params.id);
-    
-     
   
      const cart1 =  await Cart.find({'ownedByString': req.query.uid});
    
@@ -24,16 +20,17 @@ router.get(`/`, async (req, res) =>{
     res.send(cart1);
  
   });
-*/
-  ////
+
+  //add the first** product to the user cart
   router.post(`/`, async (req, res) =>{
     // localhost:3000/api/v1/carts?uid=2342342234234&pid=uewui578878
    
    
        let cart = new Cart({
          
-           ownedByString: mongoose.SchemaType.objectud(req.query.ownedByString),
-           items:[{productid: req.query.productid, quantity: req.body.quantity}]
+          // ownedByString: mongoose.SchemaType.objectid(req.query.uid),
+          ownedByString: req.query.uid,
+           items:[{productid: req.query.pid, quantity: req.query.quantity}]
           
        })
     
@@ -44,49 +41,78 @@ router.get(`/`, async (req, res) =>{
    
        res.send(cart);
    })
+
     
-   //increment quantity
+   //increment quantity of an existing product OR ADD a new product
    router.put('/',async (req, res)=> {
    
     //uid & pid
-
+    
+    const tempcart = await Cart.findOne( {'ownedByString': req.query.uid, 'items.productid':req.query.pid})
+    if(tempcart){
     const cart = await Cart.findOneAndUpdate(
-        {$and:[{'ownedByString': req.query.uid},{'items.productid':req.query.pid}]},
+        {'ownedByString': req.query.uid, 'items.productid':req.query.pid},
         {
-            
+            $inc: {'items.$.quantity': 1}
         },
         { new: true}
-    )
+        
+    );
 
     if(!cart)
+    {
     return res.status(500).send('the product cannot be updated!')
-
+    }
     res.send(cart);
-})
-//4)DELETE an item from the cart
-//i need to search for an item inside an object inside an array
-//localhost:3000/api/va/carts?userid=4656&productid=7436
+    }
 
-/*
-
-{ $pull: { items: { $elemMatch: { productid: req.query.pid  } } } },
-                function (err,val) {
-                    console.log(val)
-                    console.log(err)
-                });
+    else
+    {
+        console.log('elseeeeeeyaraaaaaaab')
+        const cart = await Cart.findOneAndUpdate(
+            {'ownedByString': req.query.uid},
+            {
+               // $push: {'items.$.productid': req.query.pid}
+               $push: {items:
+                {'productid' : req.query.pid}
+               }
+            },
+            { new: true}
+        )
     
-*/
-router.get(`/`, (req, res)=>{
-    console.log(req.query.uid);
-    console.log('YESSSSSSSSSSSS');
-    console.log(req.query.pid);
 
-        //find the cart owned by this user
+        res.send(cart);
+    }
+ 
+})
+
+
+//4)DELETE an item from the cart using uid&pid
+
+router.delete('/', async(req, res)=>{
+
+
+    const cart = await Cart.findOneAndUpdate(
+        {'ownedByString': req.query.uid, 'items.productid':req.query.pid},
+        {
+            $pull: {items:
+                {'productid' : req.query.pid}
+               }
+            },
+            { new: true}
         
-Cart.findOne({$and:[{'ownedByString': req.query.uid},{'items.productid':req.query.pid}]}) 
-              
+    );
 
-});
+    if(!cart)
+    {
+    return res.status(500).send('the cart cannot be deleted!')
+    }
+
+   // res.send(cart);
+    return res.status(200).json({success: true, message: 'the cart is deleted!'})
+    
+   
+})
 
 
 
