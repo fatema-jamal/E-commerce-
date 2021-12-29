@@ -24,12 +24,14 @@ app.use(errorHandler);
 const users=require('./routes/users');
 const cartr = require('./routes/carts');
 const productsRoutes = require('./routes/products');
+const order = require('./routes/orders');
 
 const api = process.env.API_URL;
 
 app.use(`${api}/users`,users.router);
 app.use(`${api}/carts`, cartr);
 app.use(`${api}/products`,  productsRoutes);
+app.use(`${api}/orders`, order);
 
 
 //connect to DB URI
